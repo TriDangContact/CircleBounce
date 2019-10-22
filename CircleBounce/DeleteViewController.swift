@@ -17,18 +17,34 @@ class DeleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        circleList = stateController?.circles ?? []
-        circleView.stateController = stateController
-        circleView.circleList = circleList
         
-        deleting()
+        
+        displayDeleteView()
         
         //TODO: Allow deletion, STOP the motion, and don't allow creation
     }
 
-    func deleting() {
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+        guard sender.view != nil else { return }
+             
+        if sender.state == .ended {      // Move the view down and to the right when tapped.
+            let tap = sender.location(in: sender.view)
+            print(tap)
+            deleteCircle(at: tap)
+        }
+    }
+        
+    func displayDeleteView() {
+        circleList = stateController?.circles ?? []
+        circleView.stateController = stateController
+        circleView.circleList = circleList
         circleView.getData()
-        circleView.atDelete()
+    }
+    
+    func deleteCircle(at point: CGPoint) {
+        let deleted = stateController?.deleteAt(at: point)
+        print("Deleted: \(deleted ?? 0)")
+        circleView.deletedCircle()
     }
 
 }

@@ -14,17 +14,55 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN" customClass="CircleView" customModule="CircleBounce" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUT-j9-FlS">
+                                <rect key="frame" x="303" y="79" width="80" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title=" COLOR" image="black-circle">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="colorBtn:" destination="9pv-A4-QxB" eventType="touchUpInside" id="KuY-db-wOK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw circles by holding down finger, drag, and release." textAlignment="center" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-kZ-89p">
+                                <rect key="frame" x="71.5" y="428" width="271" height="40.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40.5" id="Vdx-E0-ITm"/>
+                                    <constraint firstAttribute="width" constant="271" id="WZT-XZ-cri"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="jmi-kZ-89p" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="1Pe-SX-utU"/>
+                            <constraint firstItem="iUT-j9-FlS" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="35" id="28Y-Un-GDI"/>
+                            <constraint firstItem="jmi-kZ-89p" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="dFR-HH-CHl"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="iUT-j9-FlS" secondAttribute="trailing" constant="31" id="ut6-fW-Z95"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CUO-lE-Zfl" appends="YES" id="Kgh-cZ-tlD"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Draw" image="pencil.circle.fill" catalog="system" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="circleView" destination="tsR-hK-woN" id="voA-jL-WHc"/>
+                        <outlet property="instructionText" destination="jmi-kZ-89p" id="1MK-JZ-Hra"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="CUO-lE-Zfl">
+                    <connections>
+                        <action selector="panGesture:" destination="9pv-A4-QxB" id="Z7Y-3b-UIC"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1197" y="-751"/>
+            <point key="canvasLocation" x="1195.6521739130435" y="-751.33928571428567"/>
         </scene>
         <!--MoveViewController-->
         <scene sceneID="ZsX-PL-fFx">
@@ -34,7 +72,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="cTE-cs-qxI"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="A0B-C3-IXF" appends="YES" id="UPz-gQ-s1r"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Move" image="location.circle.fill" catalog="system" id="1Om-N2-8s2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -43,6 +85,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqB-pG-1d9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="A0B-C3-IXF">
+                    <connections>
+                        <action selector="moveGesture:" destination="8jx-vZ-fz3" id="FUV-8S-pnU"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1196" y="727"/>
         </scene>
@@ -54,7 +101,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="tqg-4S-EAP" appends="YES" id="PZy-AP-lug"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Delete" image="trash.circle.fill" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
@@ -62,6 +113,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tqg-4S-EAP">
+                    <connections>
+                        <action selector="tapGesture:" destination="8rJ-Kc-sve" id="bXv-NU-SLC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1196" y="0.0"/>
         </scene>
@@ -86,6 +142,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="black-circle" width="30" height="30"/>
         <image name="location.circle.fill" catalog="system" width="64" height="60"/>
         <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
         <image name="trash.circle.fill" catalog="system" width="64" height="60"/>

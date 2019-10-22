@@ -54,16 +54,16 @@ class TabBarDelegate: UITabBarController, UITabBarControllerDelegate {
             if title == "DrawViewController" {
                 stop()
                 let view = viewController as? DrawViewController
-                view?.draw()
+                view?.displayDrawView()
             } else if title == "DeleteViewController" {
                 stop()
                 let view = viewController as? DeleteViewController
-                view?.deleting()
+                view?.displayDeleteView()
             } else if title == "MoveViewController" {
                 // prevent more than 1 timer to be created
                 stop()
                 let view = viewController as? MoveViewController
-                view?.move()
+                view?.displayMoveView()
                 let circleView = view?.circleView
                 start(circview: circleView)
             }

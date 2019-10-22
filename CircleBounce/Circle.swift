@@ -10,39 +10,49 @@ import Foundation
 import UIKit
 
 struct Circle: Equatable {
-    var centerX:CGFloat
-    var centerY:CGFloat
+    var x:CGFloat
+    var y:CGFloat
     var deltaX:CGFloat
     var deltaY:CGFloat
     var radius:CGFloat
+    var color:CGColor
     
-    init(x:CGFloat, y:CGFloat, dx:CGFloat, dy:CGFloat, rad:CGFloat) {
-        centerX = x
-        centerY = y
-        deltaX = dx
-        deltaY = dy
-        radius = rad
-    }
-    
-    mutating func setX(x:CGFloat) {
-        self.centerX = x
-    }
-    mutating func setY(y:CGFloat) {
-        self.centerY = y
-    }
-    mutating func setDX(dx:CGFloat) {
+    init(x:CGFloat, y:CGFloat, dx:CGFloat, dy:CGFloat, rad:CGFloat, color:CGColor) {
+        self.x = x
+        self.y = y
         self.deltaX = dx
+        self.deltaY = dy
+        self.radius = rad
+        self.color = color
     }
-    mutating func setDY(dy:CGFloat) {
+    
+    mutating func setXY(x:CGFloat, y:CGFloat) {
+        self.x = x
+        self.y = y
+    }
+    
+    mutating func setDelta(dx:CGFloat, dy:CGFloat) {
+        self.deltaX = dx
         self.deltaY = dy
     }
     
+    func contains(point: CGPoint) -> Bool{
+        let centerX = self.x + self.radius
+        let centerY = self.y + self.radius
+        if ((point.x - centerX) * (point.x - centerX) + (point.y - centerY) * (point.y - centerY)) <= radius*radius {
+            print("Inside circle")
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func toString() -> String {
-        return "x: \(centerX) | y: \(centerY) | dx: \(deltaX) | dy: \(deltaY) | radius: \(radius)"
+        return "x: \(x) | y: \(y) | dx: \(deltaX) | dy: \(deltaY) | radius: \(radius)"
     }
     
     static func ==(lhs: Circle, rhs: Circle) -> Bool {
-        return lhs.centerX == rhs.centerX && lhs.centerY == rhs.centerY && lhs.radius == rhs.radius
+        return lhs.x == rhs.x && lhs.y == rhs.y && lhs.radius == rhs.radius
     }
     
 }
